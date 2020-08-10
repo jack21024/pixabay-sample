@@ -1,20 +1,20 @@
-package com.jack.sample.pixabay.home.data
+package com.jack.sample.pixabay.home.data.entity
 
 
 import com.google.gson.annotations.SerializedName
 
-data class PixabayImagesData(
+data class ImageList(
     @SerializedName("total")
-    var total: Int?,
+    var totalImages: Int = 0,
     @SerializedName("totalHits")
-    var totalHits: Int?,
+    var totalImagesHit: Int = 0,
     @SerializedName("hits")
-    var hits: List<ImageData>?
+    var imageList: List<Image>?
 )
 
-data class ImageData(
+data class Image(
     @SerializedName("id")
-    var id: Int?,
+    var id: Int = 0,
     @SerializedName("pageURL")
     var pageURL: String?,
     @SerializedName("type")
@@ -24,35 +24,35 @@ data class ImageData(
     @SerializedName("previewURL")
     var previewURL: String?,
     @SerializedName("previewWidth")
-    var previewWidth: Int?,
+    var previewWidth: Int = 0,
     @SerializedName("previewHeight")
-    var previewHeight: Int?,
+    var previewHeight: Int = 0,
     @SerializedName("webformatURL")
     var webformatURL: String?,
     @SerializedName("webformatWidth")
-    var webformatWidth: Int?,
+    var webformatWidth: Int = 0,
     @SerializedName("webformatHeight")
-    var webformatHeight: Int?,
+    var webformatHeight: Int = 0,
     @SerializedName("largeImageURL")
     var largeImageURL: String?,
     @SerializedName("imageWidth")
-    var imageWidth: Int?,
+    var imageWidth: Int? = 0,
     @SerializedName("imageHeight")
-    var imageHeight: Int?,
+    var imageHeight: Int = 0,
     @SerializedName("imageSize")
-    var imageSize: Int?,
+    var imageSize: Int = 0,
     @SerializedName("views")
-    var views: Int?,
+    var views: Int = 0,
     @SerializedName("downloads")
-    var downloads: Int?,
+    var downloads: Int = 0,
     @SerializedName("favorites")
-    var favorites: Int?,
+    var favorites: Int = 0,
     @SerializedName("likes")
-    var likes: Int?,
+    var likes: Int = 0,
     @SerializedName("comments")
-    var comments: Int?,
+    var comments: Int = 0,
     @SerializedName("user_id")
-    var userId: Int?,
+    var userId: Int = 0,
     @SerializedName("user")
     var user: String?,
     @SerializedName("userImageURL")
