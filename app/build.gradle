@@ -34,4 +34,6 @@ dependencies {
 
     // submodule
     implementation project(':BaseModule')
+
+    implementation 'com.google.code.gson:gson:2.8.6'
 }
