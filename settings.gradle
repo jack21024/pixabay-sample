@@ -1,2 +1,4 @@
 include ':app'
+include ':BaseModule'
+project(':BaseModule').projectDir = new File("BaseModule/baselibrary")
 rootProject.name='pixabay-sample'
