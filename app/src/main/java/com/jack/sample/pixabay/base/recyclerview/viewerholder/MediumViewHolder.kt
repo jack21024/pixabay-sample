@@ -12,9 +12,14 @@ class MediumViewHolder(parent: ViewGroup ) : BaseViewHolder<MediumCardItem>(R.la
 
     override fun bind(data: MediumCardItem) {
         itemView.apply {
+            text_user_name.text = data.userName
+            text_likes.text = data.likes.toString()
+            text_stars.text = data.stars.toString()
+            text_comments.text = data.stars.toString()
             Glide.with(context)
                 .load(data.imageUrl)
-                .into(this.image)
+                .placeholder(R.drawable.draw_medium_placholder)
+                .into(this.image_medium)
         }
     }
 

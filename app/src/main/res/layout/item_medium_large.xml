@@ -1,12 +1,113 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout_root"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:paddingBottom="1dp"
+    android:background="@color/bs_gray_900"
+    tools:background="@color/bs_blue_200">
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/image"
-        android:layout_width="150dp"
-        android:layout_height="150dp" />
+        android:id="@+id/image_medium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="fitCenter"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
 
-</LinearLayout>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guide_line_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="@dimen/bs_space_xlarge" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#22000000"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <TextView
+        style="@style/bs_lala_text_context_normal"
+        android:id="@+id/text_user_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/bs_space_normal"
+        android:textColor="@color/bs_white"
+        tools:text="jack21024"
+        app:layout_constraintTop_toTopOf="@+id/icon_comments"
+        app:layout_constraintBottom_toBottomOf="@+id/icon_comments"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <ImageView
+        android:id="@+id/icon_likes"
+        android:layout_width="@dimen/go_icon_size"
+        android:layout_height="@dimen/go_icon_size"
+        android:layout_marginEnd="@dimen/bs_space_small"
+        android:src="@drawable/ic_favorite_border_black_24dp"
+        app:layout_constraintEnd_toStartOf="@+id/text_likes"
+        app:layout_constraintTop_toTopOf="@+id/text_likes"
+        app:layout_constraintBottom_toBottomOf="@+id/text_likes"/>
+
+    <TextView
+        style="@style/bs_lala_text_context_normal"
+        android:id="@+id/text_likes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/bs_space_xlarge"
+        android:textColor="@color/bs_white"
+        tools:text="3"
+        app:layout_constraintEnd_toStartOf="@+id/icon_stars"
+        app:layout_constraintTop_toTopOf="@+id/icon_stars"
+        app:layout_constraintBottom_toBottomOf="@+id/icon_stars" />
+
+    <ImageView
+        android:id="@+id/icon_stars"
+        android:layout_width="@dimen/go_icon_size"
+        android:layout_height="@dimen/go_icon_size"
+        android:layout_marginEnd="@dimen/bs_space_small"
+        android:src="@drawable/ic_star_border_black_24dp"
+        app:layout_constraintEnd_toStartOf="@+id/text_stars"
+        app:layout_constraintTop_toTopOf="@+id/text_stars"
+        app:layout_constraintBottom_toBottomOf="@+id/text_stars" />
+
+    <TextView
+        style="@style/bs_lala_text_context_normal"
+        android:id="@+id/text_stars"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/bs_space_xlarge"
+        android:textColor="@color/bs_white"
+        tools:text="3"
+        app:layout_constraintEnd_toStartOf="@+id/icon_comments"
+        app:layout_constraintTop_toTopOf="@+id/icon_comments"
+        app:layout_constraintBottom_toBottomOf="@+id/icon_comments" />
+
+    <ImageView
+        android:id="@+id/icon_comments"
+        android:layout_width="@dimen/go_icon_size"
+        android:layout_height="@dimen/go_icon_size"
+        android:layout_marginEnd="@dimen/bs_space_small"
+        android:src="@drawable/ic_chat_bubble_outline_black_24dp"
+        app:layout_constraintEnd_toStartOf="@+id/text_comments"
+        app:layout_constraintTop_toTopOf="@+id/text_comments"
+        app:layout_constraintBottom_toBottomOf="@+id/text_comments" />
+
+    <TextView
+        style="@style/bs_lala_text_context_normal"
+        android:id="@+id/text_comments"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/bs_space_large"
+        android:textColor="@color/bs_white"
+        tools:text="13"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/guide_line_bottom" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
