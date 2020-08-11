@@ -1,7 +1,7 @@
-package com.jack.sample.pixabay.net
+package com.jack.sample.pixabay.base.net
 
 import com.jack.sample.pixabay.BuildConfig
-import com.jack.sample.pixabay.home.data.entity.ImageList
+import com.jack.sample.pixabay.home.data.entity.PixabayImageList
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -15,7 +15,7 @@ interface PixabayService {
     @GET("/api")
     suspend fun getImages(
         @QueryMap params: Map<String, String>
-    ): Response<ImageList>
+    ): Response<PixabayImageList>
 
     companion object {
         private const val BASE_URL = "https://pixabay.com"
@@ -25,7 +25,8 @@ interface PixabayService {
 
         fun getInstance(): PixabayService =
             INSTANCE ?: synchronized(this) {
-                INSTANCE ?: create().also {
+                INSTANCE
+                    ?: create().also {
                     INSTANCE = it
                 }
             }

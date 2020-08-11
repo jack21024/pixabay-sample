@@ -3,16 +3,16 @@ package com.jack.sample.pixabay.home.data.entity
 
 import com.google.gson.annotations.SerializedName
 
-data class ImageList(
+data class PixabayImageList(
     @SerializedName("total")
     var totalImages: Int = 0,
     @SerializedName("totalHits")
     var totalImagesHit: Int = 0,
     @SerializedName("hits")
-    var imageList: List<Image>?
+    var imageList: List<PixabayImage>?
 )
 
-data class Image(
+data class PixabayImage(
     @SerializedName("id")
     var id: Int = 0,
     @SerializedName("pageURL")
