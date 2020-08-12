@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/edit_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/bs_space_xlarge"
+        android:imeOptions="actionSearch"
+        android:inputType="text"
+        android:drawableLeft="@drawable/ic_search_black_24dp"
+        android:drawablePadding="@dimen/bs_space_large"
+        tools:text="keyword"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        style="@style/bs_lala_text_title_normal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/bs_space_large"
+        android:layout_marginBottom="@dimen/bs_space_normal"
+        android:text="History" />
+
+    <View
+        style="@style/bs_separator_hor"
+        android:id="@+id/view_separator1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_users" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/list_search_history"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>

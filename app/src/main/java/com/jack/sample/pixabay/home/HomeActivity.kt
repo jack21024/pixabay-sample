@@ -1,5 +1,6 @@
 package com.jack.sample.pixabay.home
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -11,6 +12,7 @@ import com.jack.sample.pixabay.home.data.repository.MediumRepository
 import com.jack.sample.pixabay.home.ui.viewcontroller.MediumSwitchController
 import com.jack.sample.pixabay.home.ui.viewcontroller.MediumViewController
 import com.jack.sample.pixabay.home.viewmodel.HomeViewModel
+import com.jack.sample.pixabay.search.SearchActivity
 import kotlinx.android.synthetic.main.activity_home.*
 
 class HomeActivity: AppCompatActivity() {
@@ -47,10 +49,22 @@ class HomeActivity: AppCompatActivity() {
         mediumViewController = MediumViewController(list_medium)
         btn_medium_search.apply {
             setOnClickListener {
-                // TODO: goto search
+                SearchActivity.start(this@HomeActivity)
             }
         }
     }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if(resultCode == Activity.RESULT_OK) {
+            val keyword = data?.getStringExtra(SearchActivity.BUNDLE_ON_RESULT_STRING_KEYWORD)
+            keyword?.let {
+                viewModel.searchMedium(keyword)
+            }
+        }
+    }
+
+
 
     companion object {
         fun start(context: Context) {
