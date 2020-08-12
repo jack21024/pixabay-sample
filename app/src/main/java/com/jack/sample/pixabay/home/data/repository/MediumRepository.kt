@@ -12,8 +12,8 @@ class MediumRepository {
         val source = PiaxbayImagesDataSourceFactory()
         val pagedListConf =
             PagedList.Config.Builder()
-                .setPageSize(10)
-                .setPrefetchDistance(5)
+                .setPageSize(40)
+                .setPrefetchDistance(20)
                 .build()
         return LivePagedListBuilder<Int, MediumCardItem>(source, pagedListConf).build()
     }

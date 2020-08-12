@@ -17,6 +17,26 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/btn_medium_display_switch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/bs_space_xlarge"
+        android:src="@drawable/ic_view_headline_black_24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/text_users"
+        app:layout_constraintBottom_toBottomOf="@+id/text_users"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/btn_medium_search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/bs_space_xlarge"
+        android:src="@drawable/ic_search_black_24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/text_users"
+        app:layout_constraintBottom_toBottomOf="@+id/text_users"/>
+
     <View
         android:id="@+id/view_separator1"
         style="@style/bs_separator_hor"
