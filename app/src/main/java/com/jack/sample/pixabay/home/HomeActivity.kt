@@ -10,6 +10,7 @@ import com.jack.baselibrary.extend.createViewModel
 import com.jack.sample.pixabay.R
 import com.jack.sample.pixabay.home.data.repository.MediumRepository
 import com.jack.sample.pixabay.home.enums.MediumLayoutStyle
+import com.jack.sample.pixabay.home.ui.viewcontroller.MediumSwitchController
 import com.jack.sample.pixabay.home.ui.viewcontroller.MediumViewController
 import com.jack.sample.pixabay.home.viewmodel.HomeViewModel
 import kotlinx.android.synthetic.main.activity_home.*
@@ -22,6 +23,7 @@ class HomeActivity: AppCompatActivity() {
         }
     }
 
+    private var mediumSwitchController: MediumSwitchController? = null
     private var mediumViewController: MediumViewController? = null
     private var isEnableGridLayout = false
 
@@ -47,12 +49,13 @@ class HomeActivity: AppCompatActivity() {
     }
 
     private fun initView() {
+        mediumSwitchController = MediumSwitchController(btn_medium_display_switch) { style ->
+            mediumViewController?.setLayoutStyle(style)
+        }
         mediumViewController = MediumViewController(list_medium)
-        btn_medium_display_switch.apply {
+        btn_medium_search.apply {
             setOnClickListener {
-                isEnableGridLayout = isEnableGridLayout.not()
-                val layoutStyle = if(isEnableGridLayout) MediumLayoutStyle.GRID else MediumLayoutStyle.LIST
-                mediumViewController?.setLayoutStyle(layoutStyle)
+                // TODO: goto search
             }
         }
     }
