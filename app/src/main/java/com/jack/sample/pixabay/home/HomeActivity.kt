@@ -3,13 +3,11 @@ package com.jack.sample.pixabay.home
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.jack.baselibrary.extend.createViewModel
 import com.jack.sample.pixabay.R
 import com.jack.sample.pixabay.home.data.repository.MediumRepository
-import com.jack.sample.pixabay.home.enums.MediumLayoutStyle
 import com.jack.sample.pixabay.home.ui.viewcontroller.MediumSwitchController
 import com.jack.sample.pixabay.home.ui.viewcontroller.MediumViewController
 import com.jack.sample.pixabay.home.viewmodel.HomeViewModel
@@ -25,21 +23,15 @@ class HomeActivity: AppCompatActivity() {
 
     private var mediumSwitchController: MediumSwitchController? = null
     private var mediumViewController: MediumViewController? = null
-    private var isEnableGridLayout = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
         initView()
-        setupObservable()
-
+        initViewModel()
     }
 
-    private fun setupObservable() {
-//        MediumRepository().getImageList().observe(this, Observer {
-//            mediumViewController?.update(it)
-//        })
-        MediumRepository().getImageList()
+    private fun initViewModel() {
         viewModel.mediumLiveData.observe(this, Observer { mediumData ->
             mediumData?.let {
                 mediumViewController?.update(it)

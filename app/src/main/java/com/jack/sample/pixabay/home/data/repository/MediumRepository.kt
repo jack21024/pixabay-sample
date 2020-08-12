@@ -3,13 +3,14 @@ package com.jack.sample.pixabay.home.data.repository
 import androidx.lifecycle.LiveData
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
+import com.jack.baselibrary.utils.createPagedDataSourceFactory
 import com.jack.sample.pixabay.base.recyclerview.item.MediumCardItem
-import com.jack.sample.pixabay.home.data.entity.PixabayImage
 
 class MediumRepository {
 
-    fun getImageList(): LiveData<PagedList<MediumCardItem>> {
-        val source = PiaxbayImagesDataSourceFactory()
+    fun getImageList(keyword: String? = null): LiveData<PagedList<MediumCardItem>> {
+        val source =
+            createPagedDataSourceFactory { PixabayImagesDataSource(keyword) }
         val pagedListConf =
             PagedList.Config.Builder()
                 .setPageSize(40)

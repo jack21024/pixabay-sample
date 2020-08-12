@@ -1,7 +1,6 @@
 package com.jack.sample.pixabay.home.data.repository
 
 import android.util.Log
-import androidx.paging.DataSource
 import androidx.paging.PageKeyedDataSource
 import com.jack.sample.pixabay.base.recyclerview.item.MediumCardItem
 import com.jack.sample.pixabay.home.api.PixabayImageListApi
@@ -9,14 +8,9 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
 
-class PiaxbayImagesDataSourceFactory : DataSource.Factory<Int, MediumCardItem>() {
-    override fun create(): DataSource<Int, MediumCardItem> {
-        return PixabayImagesDataSource()
-    }
-}
-
-class PixabayImagesDataSource : PageKeyedDataSource<Int, MediumCardItem>(),
-    CoroutineScope by MainScope() {
+class PixabayImagesDataSource(
+    private val keyword: String? = null
+) : PageKeyedDataSource<Int, MediumCardItem>(), CoroutineScope by MainScope() {
 
     private val TAG = PixabayImagesDataSource::class.java.simpleName
 
@@ -51,6 +45,7 @@ class PixabayImagesDataSource : PageKeyedDataSource<Int, MediumCardItem>(),
         launch {
             PixabayImageListApi()
                 .init(pageNo, PER_PAGE)
+                .setKeyword(keyword)
                 .startWithResponse().let {
                     val mediumCardItems = it.result?.body()?.imageList?.map {
                         MediumCardItem(it)

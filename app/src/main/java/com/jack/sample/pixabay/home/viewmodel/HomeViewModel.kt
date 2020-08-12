@@ -1,6 +1,5 @@
 package com.jack.sample.pixabay.home.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
@@ -29,7 +28,7 @@ class HomeViewModel(private val mediumRepository: MediumRepository) : BaseViewMo
 
     fun searchMedium(keyword: String? = null) {
         viewModelScope.launch {
-            _mediumLiveData.value = mediumRepository.getImageList()
+            _mediumLiveData.value = mediumRepository.getImageList(keyword)
         }
     }
 }
