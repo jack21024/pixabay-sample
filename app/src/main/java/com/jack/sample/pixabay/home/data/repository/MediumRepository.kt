@@ -4,13 +4,17 @@ import androidx.lifecycle.LiveData
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
 import com.jack.baselibrary.utils.createPagedDataSourceFactory
+import com.jack.sample.pixabay.home.enums.MediumOrderType
 import com.jack.sample.pixabay.home.ui.recyclerview.item.MediumCardItem
 
 class MediumRepository {
 
-    fun getImageList(keyword: String? = null): LiveData<PagedList<MediumCardItem>> {
+    fun getImageList(
+        keyword: String? = null,
+        orderType: MediumOrderType? = null
+    ): LiveData<PagedList<MediumCardItem>> {
         val source =
-            createPagedDataSourceFactory { PixabayImagesDataSource(keyword) }
+            createPagedDataSourceFactory { PixabayImagesDataSource(keyword, orderType) }
         val pagedListConf =
             PagedList.Config.Builder()
                 .setPageSize(40)

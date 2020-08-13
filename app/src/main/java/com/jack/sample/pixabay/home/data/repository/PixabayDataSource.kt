@@ -4,12 +4,14 @@ import android.util.Log
 import androidx.paging.PageKeyedDataSource
 import com.jack.sample.pixabay.home.ui.recyclerview.item.MediumCardItem
 import com.jack.sample.pixabay.home.api.PixabayImageListApi
+import com.jack.sample.pixabay.home.enums.MediumOrderType
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
 
 class PixabayImagesDataSource(
-    private val keyword: String? = null
+    private val keyword: String? = null,
+    private val orderType: MediumOrderType? = null
 ) : PageKeyedDataSource<Int, MediumCardItem>(), CoroutineScope by MainScope() {
 
     private val TAG = PixabayImagesDataSource::class.java.simpleName
@@ -46,6 +48,7 @@ class PixabayImagesDataSource(
             PixabayImageListApi()
                 .init(pageNo, PER_PAGE)
                 .setKeyword(keyword)
+                .setOrder(orderType)
                 .startWithResponse().let {
                     val mediumCardItems = it.result?.body()?.imageList?.map {
                         MediumCardItem(it)
