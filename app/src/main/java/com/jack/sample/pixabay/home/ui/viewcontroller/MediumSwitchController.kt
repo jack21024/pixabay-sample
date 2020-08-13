@@ -6,24 +6,28 @@ import com.jack.sample.pixabay.home.enums.MediumLayoutStyle
 
 class MediumSwitchController(
     private val imageView: ImageView,
-    private var status: MediumLayoutStyle = MediumLayoutStyle.LIST,
+    initialStyle: MediumLayoutStyle = MediumLayoutStyle.LIST,
     private val onClicked: ((status: MediumLayoutStyle) -> Unit)? = null
 ) : BaseViewController<MediumLayoutStyle>(imageView) {
 
+    private val layoutStyle: MediumLayoutStyle
+        get() = if (imageView.isSelected) {
+            MediumLayoutStyle.GRID
+        } else {
+            MediumLayoutStyle.LIST
+        }
+
     init {
         imageView.setOnClickListener {
-            status = if(status == MediumLayoutStyle.LIST) {
-                MediumLayoutStyle.GRID
-            } else {
-                MediumLayoutStyle.LIST
-            }
-            imageView.setImageResource(status.iconRes)
-            onClicked?.invoke(status)
+            it.isSelected = !it.isSelected
+            onClicked?.invoke(layoutStyle)
         }
+        update(initialStyle)
     }
 
     override fun update(data: MediumLayoutStyle) {
-        status = data
+        if(data != layoutStyle) {
+            imageView.performClick()
+        }
     }
-
 }

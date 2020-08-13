@@ -9,6 +9,7 @@ import androidx.lifecycle.Observer
 import com.jack.baselibrary.extend.createViewModel
 import com.jack.sample.pixabay.R
 import com.jack.sample.pixabay.home.data.repository.MediumRepository
+import com.jack.sample.pixabay.home.enums.MediumLayoutStyle
 import com.jack.sample.pixabay.home.ui.viewcontroller.MediumSwitchController
 import com.jack.sample.pixabay.home.ui.viewcontroller.MediumViewController
 import com.jack.sample.pixabay.home.viewmodel.HomeViewModel
@@ -43,10 +44,10 @@ class HomeActivity: AppCompatActivity() {
     }
 
     private fun initView() {
-        mediumSwitchController = MediumSwitchController(btn_medium_display_switch) { style ->
+        mediumViewController = MediumViewController(list_medium, progress_medium_loading)
+        mediumSwitchController = MediumSwitchController(btn_medium_display_switch, MediumLayoutStyle.GRID) { style ->
             mediumViewController?.setLayoutStyle(style)
         }
-        mediumViewController = MediumViewController(list_medium, progress_medium_loading)
         btn_medium_search.apply {
             setOnClickListener {
                 SearchActivity.start(this@HomeActivity)
