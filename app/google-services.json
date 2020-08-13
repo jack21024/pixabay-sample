@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "633686739886",
+    "firebase_url": "https://pixabay-sample.firebaseio.com",
+    "project_id": "pixabay-sample",
+    "storage_bucket": "pixabay-sample.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:633686739886:android:4b4b112ed77de43735d63f",
+        "android_client_info": {
+          "package_name": "com.jack.sample.pixabay"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "633686739886-iq9r0nrt04ak9qohhh386fp9uhdaphj7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.jack.sample.pixabay",
+            "certificate_hash": "504812f8bb3914de49e06a5191d869c32f08d834"
+          }
+        },
+        {
+          "client_id": "633686739886-kj7jpblltlrclvbnb2tbnhr0m16mg79p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCIvP4tLtZaYhRD1hzqflQ0IGCf1YQ799E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "633686739886-kj7jpblltlrclvbnb2tbnhr0m16mg79p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,4 +1,4 @@
-package com.jack.sample.pixabay
+package com.jack.sample.pixabay.launch
 
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
@@ -10,7 +10,9 @@ import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import android.view.View
-
+import com.jack.baselibrary.extend.createViewModel
+import com.jack.sample.pixabay.R
+import com.jack.sample.pixabay.base.RemoteConfig
 
 
 class LaunchActivity : AppCompatActivity(), CoroutineScope by MainScope() {
@@ -21,8 +23,8 @@ class LaunchActivity : AppCompatActivity(), CoroutineScope by MainScope() {
         setContentView(R.layout.activity_lauch)
 
         launch {
-            delay(1000)
-            HomeActivity.start(this@LaunchActivity)
+            delay(3000)
+            HomeActivity.start(this@LaunchActivity, RemoteConfig.mediumLayoutStyle)
             finish()
         }
     }

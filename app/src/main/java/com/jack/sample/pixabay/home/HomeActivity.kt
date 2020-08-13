@@ -30,7 +30,10 @@ class HomeActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
-        initView()
+        val style = intent.getSerializableExtra(BUNDLE_OBJ_MEDIUM_LAYOUT_STYLE)?.let {
+            it as MediumLayoutStyle
+        }
+        initView(style)
         initViewModel()
     }
 
@@ -43,9 +46,9 @@ class HomeActivity: AppCompatActivity() {
         viewModel.start()
     }
 
-    private fun initView() {
+    private fun initView(style: MediumLayoutStyle?) {
         mediumViewController = MediumViewController(list_medium, progress_medium_loading)
-        mediumSwitchController = MediumSwitchController(btn_medium_display_switch, MediumLayoutStyle.GRID) { style ->
+        mediumSwitchController = MediumSwitchController(btn_medium_display_switch, style) { style ->
             mediumViewController?.setLayoutStyle(style)
         }
         btn_medium_search.apply {
@@ -66,8 +69,11 @@ class HomeActivity: AppCompatActivity() {
     }
 
     companion object {
-        fun start(context: Context) {
+        const val BUNDLE_OBJ_MEDIUM_LAYOUT_STYLE = "BUNDLE_OBJ_MEDIUM_LAYOUT_STYLE"
+
+        fun start(context: Context, mediaLayoutStyle: MediumLayoutStyle) {
             val intent = Intent(context, HomeActivity::class.java)
+            intent.putExtra(BUNDLE_OBJ_MEDIUM_LAYOUT_STYLE, mediaLayoutStyle)
             context.startActivity(intent)
         }
     }

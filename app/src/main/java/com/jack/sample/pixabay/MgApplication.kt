@@ -1,6 +1,7 @@
 package com.jack.sample.pixabay
 
 import android.app.Application
+import com.jack.sample.pixabay.base.RemoteConfig
 import com.jack.sample.pixabay.base.pref.GlobalPref
 import timber.log.Timber
 
@@ -14,5 +15,8 @@ class MgApplication : Application() {
         }
 
         GlobalPref.init(this)
+        RemoteConfig.init()
+        AppEventHelper.init()
+        Session.init()
     }
 }

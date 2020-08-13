@@ -6,7 +6,7 @@ import com.jack.sample.pixabay.home.enums.MediumLayoutStyle
 
 class MediumSwitchController(
     private val imageView: ImageView,
-    initialStyle: MediumLayoutStyle = MediumLayoutStyle.LIST,
+    initialStyle: MediumLayoutStyle?,
     private val onClicked: ((status: MediumLayoutStyle) -> Unit)? = null
 ) : BaseViewController<MediumLayoutStyle>(imageView) {
 
@@ -22,11 +22,11 @@ class MediumSwitchController(
             it.isSelected = !it.isSelected
             onClicked?.invoke(layoutStyle)
         }
-        update(initialStyle)
+        update(initialStyle ?: MediumLayoutStyle.LIST)
     }
 
     override fun update(data: MediumLayoutStyle) {
-        if(data != layoutStyle) {
+        if (data != layoutStyle) {
             imageView.performClick()
         }
     }
