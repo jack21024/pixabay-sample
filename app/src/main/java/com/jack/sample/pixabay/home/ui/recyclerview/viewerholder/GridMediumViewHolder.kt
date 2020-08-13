@@ -14,7 +14,7 @@ class GridMediumViewHolder(parent: ViewGroup ) : BaseViewHolder<MediumCardItem>(
         itemView.apply {
             Glide.with(context)
                 .load(data.thumbnailUrl)
-                .placeholder(R.drawable.draw_medium_placholder)
+                .placeholder(R.drawable.draw_placholder)
                 .into(this.image_medium)
         }
     }

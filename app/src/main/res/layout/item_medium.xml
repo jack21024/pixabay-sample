@@ -47,10 +47,10 @@
 
     <ImageView
         android:id="@+id/icon_likes"
-        android:layout_width="@dimen/go_icon_size"
-        android:layout_height="@dimen/go_icon_size"
+        android:layout_width="@dimen/mg_icon_size"
+        android:layout_height="@dimen/mg_icon_size"
         android:layout_marginEnd="@dimen/bs_space_small"
-        android:src="@drawable/ic_favorite_border_black_24dp"
+        android:src="@drawable/ic_favorites_24dp"
         app:layout_constraintEnd_toStartOf="@+id/text_likes"
         app:layout_constraintTop_toTopOf="@+id/text_likes"
         app:layout_constraintBottom_toBottomOf="@+id/text_likes"/>
@@ -69,10 +69,10 @@
 
     <ImageView
         android:id="@+id/icon_stars"
-        android:layout_width="@dimen/go_icon_size"
-        android:layout_height="@dimen/go_icon_size"
+        android:layout_width="@dimen/mg_icon_size"
+        android:layout_height="@dimen/mg_icon_size"
         android:layout_marginEnd="@dimen/bs_space_small"
-        android:src="@drawable/ic_star_border_black_24dp"
+        android:src="@drawable/ic_star_24dp"
         app:layout_constraintEnd_toStartOf="@+id/text_stars"
         app:layout_constraintTop_toTopOf="@+id/text_stars"
         app:layout_constraintBottom_toBottomOf="@+id/text_stars" />
@@ -91,10 +91,10 @@
 
     <ImageView
         android:id="@+id/icon_comments"
-        android:layout_width="@dimen/go_icon_size"
-        android:layout_height="@dimen/go_icon_size"
+        android:layout_width="@dimen/mg_icon_size"
+        android:layout_height="@dimen/mg_icon_size"
         android:layout_marginEnd="@dimen/bs_space_small"
-        android:src="@drawable/ic_chat_bubble_outline_black_24dp"
+        android:src="@drawable/ic_chat_bubble_24dp"
         app:layout_constraintEnd_toStartOf="@+id/text_comments"
         app:layout_constraintTop_toTopOf="@+id/text_comments"
         app:layout_constraintBottom_toBottomOf="@+id/text_comments" />

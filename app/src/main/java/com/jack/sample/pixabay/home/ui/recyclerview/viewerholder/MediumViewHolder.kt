@@ -4,7 +4,6 @@ import android.graphics.drawable.GradientDrawable
 import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.jack.baselibrary.recyclerview.viewholder.BaseViewHolder
 import com.jack.baselibrary.utils.DisplayUtils
 import com.jack.sample.pixabay.R
@@ -18,7 +17,7 @@ class MediumViewHolder(parent: ViewGroup ) : BaseViewHolder<MediumCardItem>(R.la
         val ratio = data.imageHeigh.toFloat() / data.imageWidth.toFloat()
         val w = DisplayUtils.screenWidth
         val h = Math.round(w.toFloat() * ratio)
-        val placeholder = itemView.context.getDrawable(R.drawable.draw_medium_placholder)?.apply {
+        val placeholder = itemView.context.getDrawable(R.drawable.draw_placholder)?.apply {
             (this as GradientDrawable).setSize(w, h)
         }
         itemView.apply {

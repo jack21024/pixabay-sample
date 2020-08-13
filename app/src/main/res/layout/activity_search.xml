@@ -14,7 +14,7 @@
         android:layout_marginTop="@dimen/bs_space_xlarge"
         android:imeOptions="actionSearch"
         android:inputType="text"
-        android:drawableLeft="@drawable/ic_search_black_24dp"
+        android:drawableLeft="@drawable/ic_search_24dp"
         android:drawablePadding="@dimen/bs_space_large"
         tools:text="keyword"
         app:layout_constraintStart_toStartOf="parent"
