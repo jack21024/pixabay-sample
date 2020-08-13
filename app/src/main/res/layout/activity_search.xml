@@ -24,19 +24,16 @@
         style="@style/bs_lala_text_title_normal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/bs_space_large"
-        android:layout_marginBottom="@dimen/bs_space_normal"
+        android:layout_marginTop="@dimen/bs_space_xlarge"
+        android:layout_marginStart="@dimen/bs_space_normal"
         android:text="History" />
-
-    <View
-        style="@style/bs_separator_hor"
-        android:id="@+id/view_separator1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_users" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/list_search_history"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/bs_space_large"
+        android:paddingLeft="@dimen/bs_padding_mid"
+        android:paddingRight="@dimen/bs_padding_mid"/>
 
 </LinearLayout>

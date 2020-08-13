@@ -15,6 +15,7 @@
         tools:text="keyword jack" />
 
     <View
-        style="@style/bs_separator_hor" />
+        style="@style/bs_separator_hor"
+        android:background="@color/bs_gray_200"/>
 
 </LinearLayout>
