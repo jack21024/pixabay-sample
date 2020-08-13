@@ -12,8 +12,8 @@ import com.jack.sample.pixabay.home.ui.recyclerview.item.MediumCardItem
 import com.jack.sample.pixabay.home.enums.MediumLayoutStyle
 import com.jack.sample.pixabay.home.ui.recyclerview.adapter.MediumPagedAdapter
 
-class MediumViewController(view: RecyclerView) :
-    BaseViewController<LiveData<PagedList<MediumCardItem>>>(view) {
+class MediumViewController(private val recyclerView: RecyclerView) :
+    BaseViewController<LiveData<PagedList<MediumCardItem>>>(recyclerView) {
 
     private var adapter = MediumPagedAdapter()
     private var mediumLiveData: LiveData<PagedList<MediumCardItem>>? = null
@@ -28,13 +28,10 @@ class MediumViewController(view: RecyclerView) :
     }
 
     override fun update(data: LiveData<PagedList<MediumCardItem>>) {
-//        mediumCardItemList = data
-//        adapter.submitList(data)
-
         mediumLiveData?.removeObserver(observable)
         mediumLiveData = data.apply {
-            view.context.let {
-                if(it is LifecycleOwner) {
+            recyclerView.context.let {
+                if (it is LifecycleOwner) {
                     observe(it, observable)
                 }
             }
@@ -47,28 +44,29 @@ class MediumViewController(view: RecyclerView) :
     }
 
     private fun updateLayoutManager(newLayoutManager: RecyclerView.LayoutManager) {
-        if (view is RecyclerView) {
-            view.apply {
-                adapter = this@MediumViewController.adapter
-                layoutManager = newLayoutManager
+        val oldLayoutManager = recyclerView.layoutManager
+        val currentVisiblePos = when (oldLayoutManager) {
+            is LinearLayoutManager -> oldLayoutManager.findFirstVisibleItemPosition()
+            is GridLayoutManager -> oldLayoutManager.findFirstVisibleItemPosition()
+            else -> 0
+        }
+        recyclerView.apply {
+            adapter = this@MediumViewController.adapter
+            layoutManager = newLayoutManager.apply { scrollToPosition(currentVisiblePos) }
 
-            }
-            mediumCardItemList?.let {
-                submitData(it)
-            }
+        }
+        mediumCardItemList?.let {
+            submitData(it)
         }
     }
 
     fun setLayoutStyle(style: MediumLayoutStyle) {
         adapter = MediumPagedAdapter(style)
-        val layoutManager = when(style) {
+        val layoutManager = when (style) {
             MediumLayoutStyle.LIST -> LinearLayoutManager(view.context)
             MediumLayoutStyle.GRID -> GridLayoutManager(view.context, 3)
         }
         updateLayoutManager(layoutManager)
-//        mediumCardItemList?.let {
-//            submitData(it)
-//        }
     }
 
 }
