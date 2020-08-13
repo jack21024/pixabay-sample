@@ -30,9 +30,11 @@ class HomeActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
+
         val style = intent.getSerializableExtra(BUNDLE_OBJ_MEDIUM_LAYOUT_STYLE)?.let {
             it as MediumLayoutStyle
-        }
+        } ?: MediumLayoutStyle.LIST
+
         initView(style)
         initViewModel()
     }
@@ -71,9 +73,11 @@ class HomeActivity: AppCompatActivity() {
     companion object {
         const val BUNDLE_OBJ_MEDIUM_LAYOUT_STYLE = "BUNDLE_OBJ_MEDIUM_LAYOUT_STYLE"
 
-        fun start(context: Context, mediaLayoutStyle: MediumLayoutStyle) {
+        fun start(context: Context, mediaLayoutStyle: MediumLayoutStyle? = null) {
             val intent = Intent(context, HomeActivity::class.java)
-            intent.putExtra(BUNDLE_OBJ_MEDIUM_LAYOUT_STYLE, mediaLayoutStyle)
+            mediaLayoutStyle?.let {
+                intent.putExtra(BUNDLE_OBJ_MEDIUM_LAYOUT_STYLE, mediaLayoutStyle)
+            }
             context.startActivity(intent)
         }
     }
