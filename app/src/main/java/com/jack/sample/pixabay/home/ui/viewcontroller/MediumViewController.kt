@@ -12,6 +12,10 @@ import com.jack.baselibrary.viewcontroller.BaseViewController
 import com.jack.sample.pixabay.home.ui.recyclerview.item.MediumCardItem
 import com.jack.sample.pixabay.home.enums.MediumLayoutStyle
 import com.jack.sample.pixabay.home.ui.recyclerview.adapter.MediumPagedAdapter
+import com.jack.baselibrary.recyclerview.decotation.GridItemDecoration
+import com.jack.baselibrary.recyclerview.decotation.LinearItemDecoration
+import com.jack.baselibrary.utils.DisplayUtils
+import com.jack.sample.pixabay.R
 
 class MediumViewController(
     private val recyclerView: RecyclerView,
@@ -19,7 +23,8 @@ class MediumViewController(
 ) :
     BaseViewController<LiveData<PagedList<MediumCardItem>>>(recyclerView) {
 
-    private var adapter = MediumPagedAdapter()
+    private var itemSpaceSize: Int = DisplayUtils.dp2px(ITEM_SPACE_SIZE).toInt()
+    private var currentItemDecoration: RecyclerView.ItemDecoration? = null
     private var mediumLiveData: LiveData<PagedList<MediumCardItem>>? = null
     private var mediumCardItemList: PagedList<MediumCardItem>? = null
 
@@ -29,9 +34,12 @@ class MediumViewController(
     }
 
     init {
+        itemSpaceSize =
+            recyclerView.context.resources.getDimension(R.dimen.mg_list_item_space).toInt()
         setLoading(true)
-        updateLayoutManager(LinearLayoutManager(view.context))
+        setLayoutStyle(MediumLayoutStyle.LIST)
     }
+
     override fun update(data: LiveData<PagedList<MediumCardItem>>) {
         mediumLiveData?.removeObserver(observable)
         mediumLiveData = data.apply {
@@ -44,38 +52,72 @@ class MediumViewController(
     }
 
     private fun setLoading(loading: Boolean) {
-        loadingView?.visibility = if(loading) View.VISIBLE else View.GONE
+        loadingView?.visibility = if (loading) View.VISIBLE else View.GONE
     }
 
     private fun submitData(pagedList: PagedList<MediumCardItem>) {
         mediumCardItemList = pagedList
-        adapter.submitList(pagedList)
+        recyclerView.adapter.let {
+            it as MediumPagedAdapter
+        }.run {
+            submitList(pagedList)
+        }
     }
 
-    private fun updateLayoutManager(newLayoutManager: RecyclerView.LayoutManager) {
-        val oldLayoutManager = recyclerView.layoutManager
-        val currentVisiblePos = when (oldLayoutManager) {
-            is LinearLayoutManager -> oldLayoutManager.findFirstVisibleItemPosition()
-            is GridLayoutManager -> oldLayoutManager.findFirstVisibleItemPosition()
-            else -> 0
-        }
+    private fun updateLayoutManager(
+        newAdapter: MediumPagedAdapter,
+        newLayoutManager: RecyclerView.LayoutManager,
+        visiblePos: Int
+    ) {
         recyclerView.apply {
-            adapter = this@MediumViewController.adapter
-            layoutManager = newLayoutManager.apply { scrollToPosition(currentVisiblePos) }
-
+            adapter = newAdapter
+            layoutManager = newLayoutManager.apply { scrollToPosition(visiblePos) }
         }
         mediumCardItemList?.let {
             submitData(it)
         }
     }
 
-    fun setLayoutStyle(style: MediumLayoutStyle) {
-        adapter = MediumPagedAdapter(style)
-        val layoutManager = when (style) {
-            MediumLayoutStyle.LIST -> LinearLayoutManager(view.context)
-            MediumLayoutStyle.GRID -> GridLayoutManager(view.context, 3)
+    private fun updateItemDecoration(
+        old: RecyclerView.ItemDecoration?,
+        new: RecyclerView.ItemDecoration?
+    ) {
+        recyclerView.apply {
+            old?.let {
+                removeItemDecoration(it)
+            }
+            new?.let {
+                addItemDecoration(it)
+                currentItemDecoration = it
+            }
         }
-        updateLayoutManager(layoutManager)
     }
 
+    fun setLayoutStyle(style: MediumLayoutStyle) {
+        val adapter = MediumPagedAdapter(style)
+        var layoutManager = recyclerView.layoutManager
+        var itemDeco = currentItemDecoration
+        val currentPos =
+            if (layoutManager is LinearLayoutManager) {
+                layoutManager.findFirstVisibleItemPosition()
+            } else 0
+
+        when (style) {
+            MediumLayoutStyle.LIST -> {
+                layoutManager = LinearLayoutManager(view.context)
+                itemDeco = LinearItemDecoration(itemSpaceSize)
+            }
+            MediumLayoutStyle.GRID -> {
+                layoutManager = GridLayoutManager(view.context, GRID_SPAN_SIZE)
+                itemDeco = GridItemDecoration(GRID_SPAN_SIZE, itemSpaceSize)
+            }
+        }
+        updateItemDecoration(currentItemDecoration, itemDeco)
+        updateLayoutManager(adapter, layoutManager, currentPos)
+    }
+
+    companion object {
+        private const val ITEM_SPACE_SIZE = 1
+        private const val GRID_SPAN_SIZE = 3
+    }
 }

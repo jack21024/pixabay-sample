@@ -64,8 +64,6 @@ class HomeActivity: AppCompatActivity() {
         }
     }
 
-
-
     companion object {
         fun start(context: Context) {
             val intent = Intent(context, HomeActivity::class.java)
