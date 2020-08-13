@@ -46,7 +46,7 @@ class HomeActivity: AppCompatActivity() {
         mediumSwitchController = MediumSwitchController(btn_medium_display_switch) { style ->
             mediumViewController?.setLayoutStyle(style)
         }
-        mediumViewController = MediumViewController(list_medium)
+        mediumViewController = MediumViewController(list_medium, progress_medium_loading)
         btn_medium_search.apply {
             setOnClickListener {
                 SearchActivity.start(this@HomeActivity)

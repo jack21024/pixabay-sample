@@ -1,5 +1,6 @@
 package com.jack.sample.pixabay.home.ui.viewcontroller
 
+import android.view.View
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
@@ -12,7 +13,10 @@ import com.jack.sample.pixabay.home.ui.recyclerview.item.MediumCardItem
 import com.jack.sample.pixabay.home.enums.MediumLayoutStyle
 import com.jack.sample.pixabay.home.ui.recyclerview.adapter.MediumPagedAdapter
 
-class MediumViewController(private val recyclerView: RecyclerView) :
+class MediumViewController(
+    private val recyclerView: RecyclerView,
+    private val loadingView: View? = null
+) :
     BaseViewController<LiveData<PagedList<MediumCardItem>>>(recyclerView) {
 
     private var adapter = MediumPagedAdapter()
@@ -20,13 +24,14 @@ class MediumViewController(private val recyclerView: RecyclerView) :
     private var mediumCardItemList: PagedList<MediumCardItem>? = null
 
     private val observable = Observer<PagedList<MediumCardItem>> {
+        setLoading(false)
         submitData(it)
     }
 
     init {
+        setLoading(true)
         updateLayoutManager(LinearLayoutManager(view.context))
     }
-
     override fun update(data: LiveData<PagedList<MediumCardItem>>) {
         mediumLiveData?.removeObserver(observable)
         mediumLiveData = data.apply {
@@ -36,6 +41,10 @@ class MediumViewController(private val recyclerView: RecyclerView) :
                 }
             }
         }
+    }
+
+    private fun setLoading(loading: Boolean) {
+        loadingView?.visibility = if(loading) View.VISIBLE else View.GONE
     }
 
     private fun submitData(pagedList: PagedList<MediumCardItem>) {
