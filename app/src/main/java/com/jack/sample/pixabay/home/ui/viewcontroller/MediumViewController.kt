@@ -41,8 +41,10 @@ class MediumViewController(
     }
 
     override fun update(data: LiveData<PagedList<MediumCardItem>>) {
+        setLoading(true)
         mediumLiveData?.removeObserver(observable)
         mediumLiveData = data.apply {
+            recyclerView.scrollToPosition(0)
             recyclerView.context.let {
                 if (it is LifecycleOwner) {
                     observe(it, observable)
@@ -71,7 +73,8 @@ class MediumViewController(
     ) {
         recyclerView.apply {
             adapter = newAdapter
-            layoutManager = newLayoutManager.apply { scrollToPosition(visiblePos) }
+            layoutManager = newLayoutManager
+            scrollToPosition(visiblePos)
         }
         mediumCardItemList?.let {
             submitData(it)
