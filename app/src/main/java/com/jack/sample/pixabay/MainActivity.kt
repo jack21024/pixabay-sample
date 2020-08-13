@@ -23,6 +23,7 @@ class MainActivity : AppCompatActivity(), CoroutineScope by MainScope() {
         launch {
             delay(1000)
             HomeActivity.start(this@MainActivity)
+            finish()
         }
     }
 
