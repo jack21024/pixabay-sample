@@ -1,14 +1,15 @@
 package com.jack.sample.pixabay
 
 import androidx.lifecycle.MutableLiveData
-import com.jack.sample.pixabay.base.RemoteConfig
+import com.jack.baselibrary.common.BaseInstanceObject
+import com.jack.sample.pixabay.base.config.RemoteConfig
 import timber.log.Timber
 
-object Session {
+object Session : BaseInstanceObject() {
 
     var isAlreadyRemoteConfig = false
 
-    fun init() {
+    override fun onInit() {
         AppEventHelper.remoteConfigFetchEvent.observeForever {
             Timber.d("fetch remote config $it")
             isAlreadyRemoteConfig = true
@@ -17,11 +18,11 @@ object Session {
 
 }
 
-object AppEventHelper {
+object AppEventHelper : BaseInstanceObject() {
 
     val remoteConfigFetchEvent = MutableLiveData<Boolean>()
 
-    fun init() {
+    override fun onInit() {
         RemoteConfig.fetch { successful ->
             remoteConfigFetchEvent.postValue(successful)
         }

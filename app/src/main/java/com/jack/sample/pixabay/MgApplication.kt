@@ -1,7 +1,7 @@
 package com.jack.sample.pixabay
 
 import android.app.Application
-import com.jack.sample.pixabay.base.RemoteConfig
+import com.jack.sample.pixabay.base.config.RemoteConfig
 import com.jack.sample.pixabay.base.pref.GlobalPref
 import timber.log.Timber
 

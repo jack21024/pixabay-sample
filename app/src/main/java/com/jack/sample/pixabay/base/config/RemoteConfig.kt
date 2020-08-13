@@ -1,15 +1,15 @@
-package com.jack.sample.pixabay.base
+package com.jack.sample.pixabay.base.config
 
 import android.util.Log
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig
 import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings
+import com.jack.baselibrary.common.BaseInstanceObject
 import com.jack.sample.pixabay.BuildConfig
 import com.jack.sample.pixabay.R
 import com.jack.sample.pixabay.home.enums.MediumLayoutStyle
 import java.util.concurrent.TimeUnit
 
-object RemoteConfig {
-    private val TAG = RemoteConfig::class.java.simpleName
+object RemoteConfig : BaseInstanceObject() {
 
     private val fbRemoteConfig: FirebaseRemoteConfig
         get() = FirebaseRemoteConfig.getInstance()
@@ -28,7 +28,7 @@ object RemoteConfig {
             }
         }
 
-    fun init() {
+    override fun onInit() {
         fbRemoteConfig.apply {
             val fbRemoteConfigSetting =
                 FirebaseRemoteConfigSettings.Builder().apply {

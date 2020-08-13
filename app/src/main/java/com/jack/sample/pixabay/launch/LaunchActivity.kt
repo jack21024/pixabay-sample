@@ -10,9 +10,8 @@ import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import android.view.View
-import com.jack.baselibrary.extend.createViewModel
 import com.jack.sample.pixabay.R
-import com.jack.sample.pixabay.base.RemoteConfig
+import com.jack.sample.pixabay.base.config.RemoteConfig
 
 
 class LaunchActivity : AppCompatActivity(), CoroutineScope by MainScope() {
