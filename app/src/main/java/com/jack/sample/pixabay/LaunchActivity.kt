@@ -13,16 +13,16 @@ import android.view.View
 
 
 
-class MainActivity : AppCompatActivity(), CoroutineScope by MainScope() {
+class LaunchActivity : AppCompatActivity(), CoroutineScope by MainScope() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setFullscreen()
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_lauch)
 
         launch {
             delay(1000)
-            HomeActivity.start(this@MainActivity)
+            HomeActivity.start(this@LaunchActivity)
             finish()
         }
     }

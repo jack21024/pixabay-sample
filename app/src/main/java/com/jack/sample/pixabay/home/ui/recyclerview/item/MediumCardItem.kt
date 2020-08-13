@@ -1,4 +1,4 @@
-package com.jack.sample.pixabay.base.recyclerview.item
+package com.jack.sample.pixabay.home.ui.recyclerview.item
 
 import com.jack.baselibrary.recyclerview.item.BaseCardItem
 import com.jack.sample.pixabay.home.data.entity.PixabayImage

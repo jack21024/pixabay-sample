@@ -1,4 +1,4 @@
-package com.jack.sample.pixabay.search.ui.recyclerview
+package com.jack.sample.pixabay.search.ui.recyclerview.viewholder
 
 import android.view.View
 import android.view.ViewGroup

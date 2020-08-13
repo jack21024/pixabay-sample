@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.paging.PagedList
 import com.jack.baselibrary.viewmodel.BaseViewModel
-import com.jack.sample.pixabay.base.recyclerview.item.MediumCardItem
+import com.jack.sample.pixabay.home.ui.recyclerview.item.MediumCardItem
 import com.jack.sample.pixabay.home.data.repository.MediumRepository
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch

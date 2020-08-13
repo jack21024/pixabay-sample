@@ -4,7 +4,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.jack.baselibrary.viewcontroller.BaseViewController
-import com.jack.sample.pixabay.search.ui.recyclerview.SearchHistoryAdapter
+import com.jack.sample.pixabay.search.ui.recyclerview.adapter.SearchHistoryAdapter
 
 class SearchHistoryViewController(
     private val recyclerView: RecyclerView,
@@ -12,7 +12,8 @@ class SearchHistoryViewController(
 ) : BaseViewController<List<String>>(recyclerView) {
 
 
-    private val adapter: SearchHistoryAdapter = SearchHistoryAdapter(onItemClicked)
+    private val adapter: SearchHistoryAdapter =
+        SearchHistoryAdapter(onItemClicked)
 
     private var data: List<String>? = null
 

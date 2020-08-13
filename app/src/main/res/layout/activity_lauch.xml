@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bs_blue_600"
-    tools:context=".MainActivity">
+    tools:context=".LaunchActivity">
 
     <TextView
         style="@style/bs_title_bar"

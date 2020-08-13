@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
 import com.jack.baselibrary.utils.createPagedDataSourceFactory
-import com.jack.sample.pixabay.base.recyclerview.item.MediumCardItem
+import com.jack.sample.pixabay.home.ui.recyclerview.item.MediumCardItem
 
 class MediumRepository {
 

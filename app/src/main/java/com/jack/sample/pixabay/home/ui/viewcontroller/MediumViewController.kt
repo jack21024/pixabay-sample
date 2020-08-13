@@ -8,9 +8,9 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.jack.baselibrary.viewcontroller.BaseViewController
-import com.jack.sample.pixabay.base.recyclerview.item.MediumCardItem
+import com.jack.sample.pixabay.home.ui.recyclerview.item.MediumCardItem
 import com.jack.sample.pixabay.home.enums.MediumLayoutStyle
-import com.jack.sample.pixabay.home.ui.adapter.MediumPagedAdapter
+import com.jack.sample.pixabay.home.ui.recyclerview.adapter.MediumPagedAdapter
 
 class MediumViewController(view: RecyclerView) :
     BaseViewController<LiveData<PagedList<MediumCardItem>>>(view) {

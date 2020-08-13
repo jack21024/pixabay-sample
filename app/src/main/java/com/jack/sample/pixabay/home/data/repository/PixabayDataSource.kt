@@ -2,7 +2,7 @@ package com.jack.sample.pixabay.home.data.repository
 
 import android.util.Log
 import androidx.paging.PageKeyedDataSource
-import com.jack.sample.pixabay.base.recyclerview.item.MediumCardItem
+import com.jack.sample.pixabay.home.ui.recyclerview.item.MediumCardItem
 import com.jack.sample.pixabay.home.api.PixabayImageListApi
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.MainScope

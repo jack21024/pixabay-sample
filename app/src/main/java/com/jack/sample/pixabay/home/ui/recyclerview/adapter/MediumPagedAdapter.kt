@@ -1,11 +1,11 @@
-package com.jack.sample.pixabay.home.ui.adapter
+package com.jack.sample.pixabay.home.ui.recyclerview.adapter
 
 import android.view.ViewGroup
 import com.jack.baselibrary.recyclerview.adapter.BasePagedAdapter
 import com.jack.baselibrary.recyclerview.viewholder.BaseViewHolder
-import com.jack.sample.pixabay.base.recyclerview.viewerholder.MediumViewHolder
-import com.jack.sample.pixabay.base.recyclerview.item.MediumCardItem
-import com.jack.sample.pixabay.base.recyclerview.viewerholder.GridMediumViewHolder
+import com.jack.sample.pixabay.home.ui.recyclerview.viewerholder.MediumViewHolder
+import com.jack.sample.pixabay.home.ui.recyclerview.item.MediumCardItem
+import com.jack.sample.pixabay.home.ui.recyclerview.viewerholder.GridMediumViewHolder
 import com.jack.sample.pixabay.home.enums.MediumLayoutStyle
 
 class MediumPagedAdapter(
