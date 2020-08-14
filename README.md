@@ -1,6 +1,6 @@
 
 # MediumGO!
-This project shows how to fetch image for pixabay api.
+This project shows how to fetch image from pixabay api.
 
 MVVM + Kotlin Coroutines + Retrofit + Android Jetpack Library + Pagging Library
 
