@@ -8,5 +8,5 @@ MVVM + Kotlin Coroutines + Retrofit + Android Jetpack Library + Pagging Library
 Please use command 'git submodule update' to pull latest code base of BaseModule.
 
 ## Screenshot
-<img src="https://github.com/jack21024/just4image/blob/master/mediumgo_list.jpg" height="640"> <img src="https://github.com/jack21024/just4image/blob/master/mediumgo_grid.jpg" height="640"> <img src="https://github.com/jack21024/just4image/blob/master/mediumgo_search.jpg" height="640">
+<img src="https://github.com/jack21024/just4image/blob/master/mediumgo_list.jpg" height="480"> <img src="https://github.com/jack21024/just4image/blob/master/mediumgo_grid.jpg" height="480"> <img src="https://github.com/jack21024/just4image/blob/master/mediumgo_search.jpg" height="480">
 
